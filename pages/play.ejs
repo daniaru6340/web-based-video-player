@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+    <title>Movie</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+    
+    
+    
+    <style>
+
+      *{
+            margin:none;
+            padding:none;
+        }
+        body{
+            width: 100vw;
+            height:100vh;   
+            padding:none;
+            margin:none;
+            /* overflow: hidden; */
+        }
+        
+       #panel{
+            padding-top:35vh;
+            padding-right: 20vw;
+            padding-left: 20vw;
+            
+
+        }
+        #panel2{
+            
+            border-radius: 8px;
+            background-color:#1E90FF;
+            padding-bottom: 0.6vh;
+            
+            text-align: center;
+            align-items: center;
+            animation: bounce 1.11s ease forwards;
+            
+        }
+       
+        #greeting{
+          /* text-transform: capitalize; */
+          padding-top:2vh;
+          font-size:3vh;
+          align-items: center;
+          text-align: center;
+          font-family: "Lobster";
+        
+        }
+        @keyframes bounce {
+          0% { 
+            transform: translateY(-100vh);
+            opacity:0;
+          }
+          60% {
+            transform: translateY(15vh);
+            opacity:1;
+          }
+          80% {
+            transform: translateY(-5vh);
+            
+          }
+          100% {
+            transform: translateY(0);
+          }
+        }
+
+        
+
+
+      
+
+    </style>
+    
+
+  </head>
+
+  <body>
+ 
+    <div id="panel">
+      <div id="panel2">
+        <video id="video" controls preload="metadata">
+          <source src="<%= vidurl %>" type="video/mp4" />
+         
+          
+         
+        </video>
+        
+      
+       
+        
+        
+  
+    
+  </div>
+</div>
+
+
+   
+<script>
+  async function getSub(){
+    try {
+
+      var host = window.location.href;
+      var subtitle = host + "/sub.vtt";
+      console.log(subtitle);
+      
+      const response = await axios.get(subtitle);
+      const subs = response.data
+      const blob = new Blob([subs], {type: 'text/vtt'});
+      const url = URL.createObjectURL(blob);
+      console.log(url)
+      const subtrack = document.createElement("track");
+      subtrack.src = url;
+      subtrack.kind = "subtitles";
+      subtrack.srclang = "en";
+      subtrack.label ="English";
+      subtrack.default = true;
+
+      const video = document.getElementById("video");
+      video.appendChild(subtrack);
+    
+  } catch (err) {
+
+    console.log(err);
+
+  }
+}
+window.onload = getSub;
+</script>
+  </body>
+
+</html>

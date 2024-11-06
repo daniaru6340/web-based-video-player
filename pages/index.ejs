@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <title>Movie info's</title>
+    <style>
+        *{
+            margin:none;
+            padding:none;
+        }
+        body{
+            width: 100vw;
+            height:100vh;   
+            padding:none;
+            margin:none;
+            overflow: hidden;
+        }
+        #name {
+            border:none;
+            background-color: #1e90ff;
+            border-radius: 8px;
+            font-size: 16px;
+            padding:0.5vh 1vw;
+            width:11.21vw;
+            transition-duration: 0.25s;
+            text-decoration: underline;
+
+        }
+        #name:hover {
+            outline:none;
+            background-color:#78bcff;
+        }
+        #name:focus {
+            outline: none;
+            background-color: #78bcff;
+            
+        }
+        
+        
+        #submit{
+            background-color: #1E90FF;
+            color:white;
+            border:none;
+            display:inline-block;
+            text-align: center;
+            text-decoration: none;
+            font-size:16px;
+            transition-duration: 0.4s;
+            cursor:pointer;
+            padding: 0.5vh 1vw;
+            border-radius: 8px;
+            box-shadow: 3px;
+            background-color: #4ba6ff;
+
+
+        }
+        #submit:active {
+            box-shadow: 0px;
+            transform:translateY(3px)
+        }
+        #submit:hover{
+            background-color: #78bcff;
+        }
+        body {
+            align-items: center;
+            /* text-align: center; */
+        }
+        #panel{
+            padding-top:35vh;
+            padding-right: 20vw;
+            padding-left: 20vw;
+            
+
+        }
+
+        #panel2{
+            
+            border-radius: 8px;
+            background-color:#1E90FF;
+            padding-bottom: 0.6vh;
+            animation: bounce ease 1s forwards;
+        }
+        #center{
+            text-align: center;
+            align-items:center ;
+        }
+        @keyframes bounce {
+          0% { 
+            transform: translateY(-100vh);
+            opacity:0;
+          }
+          60% {
+            transform: translateY(15vh);
+            opacity:1;
+          }
+          80% {
+            transform: translateY(-5vh);
+          }
+          100% {
+            transform: translateY(0);
+          }
+        }
+
+    </style>
+    
+</head>
+<body>
+    <div id="panel">
+        <div id="panel2">
+            <div id="center">
+        <h1>Please provide the requested information below!</h1>
+
+        <form id="form" action="/play" method="POST">
+            
+            <label for="vidurl">Video-Url</label>
+            
+            <input name="vidurl" type="vidurl" id="name"  placeholder="Please enter video URL here">
+            <br></br>
+            <label for="suburl">Subtitle URL:</label>
+            <input name="suburl" type="suburl" id="name" placeholder="Please enter subtitle URL here"><br></br>
+            <button type="submit" id="submit">Enter</button>
+        </div>
+        </form>
+        </div>
+    </div>
+
+</body>
+</html>
