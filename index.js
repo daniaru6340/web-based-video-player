@@ -47,11 +47,11 @@ app.post('/play', async function(req, res) {
     let subfile;
     const subext = /\.(dfxp|scc|srt|ttml|vtt|ssa|ass)$/i;
 
-    let validurl;
+    
 
-    urlExists(suburl, function(err,exists) {
-        validurl = exists;
-    });
+    urlExists(suburl, async function(err,validurl) {
+   
+    
 
     let pageTwo;
     if((suburl === "" || suburl.length === 0 || suburl === "null") && (vidurl === "" || vidurl.length.length === 0)) {
@@ -62,7 +62,7 @@ app.post('/play', async function(req, res) {
 
     } else if (vidurl === "" || vidurl.length.length === 0) {
 
-        vidurl = "No video URl has been provided";
+        vidurl = "No video URL has been provided";
         subfile = "Please provide a Video file in the previous page"
         pageTwo = 'error';
 
@@ -73,7 +73,13 @@ app.post('/play', async function(req, res) {
         pageTwo = 'error';
 
 
-    }else if ( (subext.test(suburl)  || suburl==="localhost:") && validurl === "true" ) {
+    }else if (validurl == false ) {
+
+        vidurl = "Invalid URL has been provided";
+        subfile = "Please provide valid URL  in the previous page"
+        pageTwo = 'error';
+        
+    }else if ( (subext.test(suburl)  || suburl==="localhost:") ) {
         pageTwo = 'play';
 
         console.log("localhost or valid subtitle file detected");
@@ -104,7 +110,7 @@ app.post('/play', async function(req, res) {
             
     })
 
-    } else {
+    }  else {
         vidurl = "Something unexpected happened";
         subfile = "If you are the developer please check the console";
         pageTwo = 'error';
@@ -126,6 +132,7 @@ app.post('/play', async function(req, res) {
 
    
     res.render(pageTwo, { vidurl: vidurl, subfile: subfile});
+});
    
 });
 
