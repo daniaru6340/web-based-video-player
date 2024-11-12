@@ -43,7 +43,8 @@ app.post('/play', async function(req, res) {
     
     
     var vidurl = req.body.vidurl;
-    var suburl = req.body.suburl;
+    var suburl;
+suburl = req.body.suburl;
     let subfile;
     const subext = /\.(dfxp|scc|srt|ttml|vtt|ssa|ass)$/i;
 
