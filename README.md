@@ -2,14 +2,13 @@
 
 A web-based video player application with subtitle support.
 
-## Developer
-Developed by daniaru6340
-
 ## Description
-This is a web-based video player which supports adding various subtitle files.
+This is a web-based video player which supports various subtitle formats.
 This app will ask you to provide URL of the video file and the subtitle file.
 
 ## Installation
+
+i will assume you have nodejs installed
 
 Cloning the github repo and cd into cloned repo
 ```bash
@@ -17,16 +16,19 @@ git clone https://github.com/daniaru6340/web-based-video-player.git && cd web-ba
 ```
 Initialising the project
 ```bash
-npm init
+pnpm init
 ```
 Installing required dependencies
 ```bash
-npm install
+pnpm install
 ```
 Starting the program up
 ```bash
 node index.js
 ```
 
-now you can visit the page using a browser using your ip and the port 9000 by default
+>Now you can visit the page using a browser using your ip and the port 9000 by default
 
+
+## Developer
+Developed by daniaru6340
